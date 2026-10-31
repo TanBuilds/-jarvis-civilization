@@ -1,9 +1,5 @@
-// JARVIS Civilization Campaign System
 
 const JARVIS = {
-    name: "JARVIS",
-    version: "1.0",
-
     campaign: {
         chapter: 1,
         chapterName: "The Awakening",
@@ -17,56 +13,39 @@ const JARVIS = {
             "jarvis_campaign",
             JSON.stringify(this.campaign)
         );
-        console.log("Campaign saved.");
-    },
-
-    load() {
-        const saved = localStorage.getItem("jarvis_campaign");
-
-        if (saved) {
-            this.campaign = JSON.parse(saved);
-        }
     }
 };
 
-JARVIS.load();
+const campaignScreen = document.getElementById("campaign-screen");
+const dashboardSections = [
+    document.querySelector(".welcome"),
+    document.querySelector(".campaign-panel"),
+    document.querySelector(".modules")
+];
 
-console.log("JARVIS system initialized.");
+function openCampaign() {
+    dashboardSections.forEach(section => {
+        section.hidden = true;
+    });
 
-button {
-    background: #092536;
-    border: 1px solid #00d9ff;
-    color: #00d9ff;
-    padding: 11px 15px;
-    border-radius: 6px;
-    margin-top: 18px;
-    font-size: 11px;
-    letter-spacing: 1px;
-    cursor: pointer;
+    campaignScreen.hidden = false;
 }
 
-button:hover {
-    background: #123c50;
+function goHome() {
+    campaignScreen.hidden = true;
+
+    dashboardSections.forEach(section => {
+        section.hidden = false;
+    });
 }
 
-.campaign-screen {
-    margin-top: 35px;
-    padding: 24px;
-    background: #101b29;
-    border: 1px solid #1c3549;
-    border-radius: 10px;
-}
+document.getElementById("open-campaign")
+    .addEventListener("click", openCampaign);
 
-.campaign-screen h2 {
-    color: #00d9ff;
-    margin: 15px 0;
-}
+document.getElementById("continue-campaign")
+    .addEventListener("click", openCampaign);
 
-.campaign-details {
-    line-height: 2.2;
-    color: #b7cbd8;
-}
+document.getElementById("back-home")
+    .addEventListener("click", goHome);
 
-.campaign-screen[hidden] {
-    display: none;
-}
+JARVIS.save();
