@@ -5,80 +5,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#080d16">
-    <meta name="description" content="JARVIS Civilization Campaign">
     <title>JARVIS | Command Center</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-
 <body>
-    <header class="header">
-        <div class="logo">J.A.R.V.I.S.</div>
-        <div class="system-status">
-            <span class="status-dot"></span>
-            SYSTEM ONLINE
+
+<header class="header">
+    <div class="logo">J.A.R.V.I.S.</div>
+    <div class="system-status">
+        <span class="status-dot"></span>
+        SYSTEM ONLINE
+    </div>
+</header>
+
+<main class="dashboard">
+
+    <section class="welcome">
+        <p class="subtitle">CIVILIZATION PROJECT</p>
+        <h1>COMMAND CENTER</h1>
+        <p class="description">Welcome back, Tan.</p>
+    </section>
+
+    <section class="campaign-panel">
+        <h2>ACTIVE CAMPAIGN</h2>
+        <div class="campaign-info">
+            <p>Chapter 01</p>
+            <h3>The Awakening</h3>
+            <p>Day 01 · Forest · Evening</p>
         </div>
-    </header>
+    </section>
 
-    <main class="dashboard">
-        <section class="welcome">
-            <p class="subtitle">CIVILIZATION PROJECT</p>
-            <h1>COMMAND CENTER</h1>
-            <p class="description">Welcome back, Tan.</p>
-        </section>
+    <section class="modules">
+        <h2>SYSTEM MODULES</h2>
 
-        <section class="campaign-panel">
-            <h2>ACTIVE CAMPAIGN</h2>
-            <div class="campaign-info">
-                <p id="chapter-number">Chapter 01</p>
-                <h3 id="chapter-name">The Awakening</h3>
-                <p id="campaign-location">Day 01 · Forest · Evening</p>
-                <button id="continue-campaign">CONTINUE CAMPAIGN</button>
-            </div>
-        </section>
+        <div class="module-grid">
+            <article class="module clickable" data-screen="campaign">
+                <h3>CAMPAIGN</h3>
+                <p>Continue your civilization journey.</p>
+                <span class="module-arrow">↗</span>
+            </article>
 
-        <section class="modules">
-            <h2>SYSTEM MODULES</h2>
-            <div class="module-grid">
-                <article class="module">
-                    <h3>CAMPAIGN</h3>
-                    <p>Continue your civilization journey.</p>
-                    <button id="open-campaign">OPEN MODULE</button>
-                </article>
+            <article class="module">
+                <h3>CHARACTERS</h3>
+                <p>Meet and interact with people.</p>
+                <span class="module-arrow">↗</span>
+            </article>
 
-                <article class="module">
-                    <h3>CHARACTERS</h3>
-                    <p>Meet and interact with people.</p>
-                </article>
+            <article class="module">
+                <h3>KNOWLEDGE</h3>
+                <p>Discover science and technology.</p>
+                <span class="module-arrow">↗</span>
+            </article>
 
-                <article class="module">
-                    <h3>KNOWLEDGE</h3>
-                    <p>Discover science and technology.</p>
-                </article>
+            <article class="module">
+                <h3>INVENTORY</h3>
+                <p>Manage resources and discoveries.</p>
+                <span class="module-arrow">↗</span>
+            </article>
+        </div>
+    </section>
 
-                <article class="module">
-                    <h3>INVENTORY</h3>
-                    <p>Manage resources and discoveries.</p>
-                </article>
-            </div>
-        </section>
+    <section id="campaign-screen" class="campaign-screen" hidden>
+        <div class="back-link" id="back-home">← COMMAND CENTER</div>
 
-        <section id="campaign-screen" class="campaign-screen" hidden>
-            <button id="back-home">← BACK TO COMMAND CENTER</button>
-            <p class="subtitle">CAMPAIGN DATABASE</p>
-            <h2>THE AWAKENING</h2>
-            <div class="campaign-details">
-                <p><strong>Chapter:</strong> 01</p>
-                <p><strong>Day:</strong> 01</p>
-                <p><strong>Location:</strong> Forest</p>
-                <p><strong>Time:</strong> Evening</p>
-                <p><strong>Status:</strong> In progress</p>
-            </div>
-        </section>
+        <p class="subtitle">CAMPAIGN DATABASE</p>
+        <h2>THE AWAKENING</h2>
 
-        <footer>
-            JARVIS CIVILIZATION SYSTEM · VERSION 1.0
-        </footer>
-    </main>
+        <div class="campaign-details">
+            <p><strong>Chapter:</strong> 01</p>
+            <p><strong>Day:</strong> 01</p>
+            <p><strong>Location:</strong> Forest</p>
+            <p><strong>Time:</strong> Evening</p>
+            <p><strong>Status:</strong> In progress</p>
+        </div>
+    </section>
+
+    <footer>
+        JARVIS CIVILIZATION SYSTEM · VERSION 1.0
+    </footer>
+
+</main>
 </body>
 </html>
