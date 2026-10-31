@@ -9,43 +9,57 @@ const JARVIS = {
     },
 
     save() {
-        localStorage.setItem(
-            "jarvis_campaign",
-            JSON.stringify(this.campaign)
-        );
+        try {
+            localStorage.setItem(
+                "jarvis_campaign",
+                JSON.stringify(this.campaign)
+            );
+        } catch (error) {
+            console.error("Campaign save failed.");
+        }
     }
 };
 
-const campaignScreen = document.getElementById("campaign-screen");
-const dashboardSections = [
-    document.querySelector(".welcome"),
-    document.querySelector(".campaign-panel"),
-    document.querySelector(".modules")
-];
+document.addEventListener("DOMContentLoaded", () => {
+    const campaignScreen = document.getElementById("campaign-screen");
+    const openButton = document.getElementById("open-campaign");
+    const continueButton = document.getElementById("continue-campaign");
+    const backButton = document.getElementById("back-home");
 
-function openCampaign() {
-    dashboardSections.forEach(section => {
-        section.hidden = true;
-    });
+    const homeSections = [
+        document.querySelector(".welcome"),
+        document.querySelector(".campaign-panel"),
+        document.querySelector(".modules")
+    ];
 
-    campaignScreen.hidden = false;
-}
+    if (!campaignScreen || !openButton || !continueButton || !backButton) {
+        console.error("JARVIS: Required interface elements are missing.");
+        return;
+    }
 
-function goHome() {
-    campaignScreen.hidden = true;
+    function openCampaign() {
+        homeSections.forEach(section => {
+            if (section) section.hidden = true;
+        });
 
-    dashboardSections.forEach(section => {
-        section.hidden = false;
-    });
-}
+        campaignScreen.hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
 
-document.getElementById("open-campaign")
-    .addEventListener("click", openCampaign);
+    function returnHome() {
+        campaignScreen.hidden = true;
 
-document.getElementById("continue-campaign")
-    .addEventListener("click", openCampaign);
+        homeSections.forEach(section => {
+            if (section) section.hidden = false;
+        });
 
-document.getElementById("back-home")
-    .addEventListener("click", goHome);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
 
-JARVIS.save();
+    openButton.addEventListener("click", openCampaign);
+    continueButton.addEventListener("click", openCampaign);
+    backButton.addEventListener("click", returnHome);
+
+    JARVIS.save();
+});
+
