@@ -1,65 +1,28 @@
 
-const JARVIS = {
-    campaign: {
-        chapter: 1,
-        chapterName: "The Awakening",
-        day: 1,
-        location: "Forest",
-        time: "Evening"
-    },
-
-    save() {
-        try {
-            localStorage.setItem(
-                "jarvis_campaign",
-                JSON.stringify(this.campaign)
-            );
-        } catch (error) {
-            console.error("Campaign save failed.");
-        }
-    }
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-    const campaignScreen = document.getElementById("campaign-screen");
-    const openButton = document.getElementById("open-campaign");
-    const continueButton = document.getElementById("continue-campaign");
-    const backButton = document.getElementById("back-home");
-
-    const homeSections = [
+document.addEventListener("DOMContentLoaded", function () {
+    const home = [
         document.querySelector(".welcome"),
         document.querySelector(".campaign-panel"),
         document.querySelector(".modules")
     ];
 
-    if (!campaignScreen || !openButton || !continueButton || !backButton) {
-        console.error("JARVIS: Required interface elements are missing.");
-        return;
-    }
+    const campaign = document.getElementById("campaign-screen");
+    const campaignCard = document.querySelector('[data-screen="campaign"]');
+    const back = document.getElementById("back-home");
 
     function openCampaign() {
-        homeSections.forEach(section => {
-            if (section) section.hidden = true;
-        });
-
-        campaignScreen.hidden = false;
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        home.forEach(section => section.hidden = true);
+        campaign.hidden = false;
+        window.scrollTo(0, 0);
     }
 
-    function returnHome() {
-        campaignScreen.hidden = true;
-
-        homeSections.forEach(section => {
-            if (section) section.hidden = false;
-        });
-
-        window.scrollTo({ top: 0, behavior: "smooth" });
+    function goHome() {
+        campaign.hidden = true;
+        home.forEach(section => section.hidden = false);
+        window.scrollTo(0, 0);
     }
 
-    openButton.addEventListener("click", openCampaign);
-    continueButton.addEventListener("click", openCampaign);
-    backButton.addEventListener("click", returnHome);
-
-    JARVIS.save();
+    campaignCard.addEventListener("click", openCampaign);
+    back.addEventListener("click", goHome);
 });
 
