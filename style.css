@@ -1,69 +1,175 @@
 
-/* JARVIS INTERACTIVE BUTTONS */
+/* =================================
+   JARVIS — FUTURISTIC INTERFACE
+================================= */
 
-button {
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #070b14;
+    --panel: #0e1928;
+    --panel-light: #14263a;
+    --cyan: #00dfff;
+    --blue: #087ca5;
+    --text: #e5f5ff;
+    --muted: #8299ad;
+    --border: rgba(0, 223, 255, 0.2);
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 50% 0%, #10283d 0%, transparent 55%),
+        var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    padding: 22px 6%;
+    border-bottom: 1px solid var(--border);
+    background: rgba(7, 11, 20, 0.9);
+}
 
-    padding: 13px 20px;
-    margin-top: 18px;
+.logo {
+    color: var(--cyan);
+    font-size: 21px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-shadow: 0 0 12px rgba(0, 223, 255, 0.4);
+}
 
-    background: linear-gradient(135deg, #092536, #102f42);
-    color: #00e5ff;
+.system-status {
+    color: #9cb5c9;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
 
-    border: 1px solid #087b9b;
-    border-radius: 7px;
+.status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 7px;
+    background: #00e59b;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00e59b;
+}
 
+/* MAIN DASHBOARD */
+
+.dashboard {
+    width: 90%;
+    max-width: 1050px;
+    margin: 55px auto;
+}
+
+.welcome {
+    margin-bottom: 40px;
+}
+
+.subtitle {
+    color: var(--cyan);
     font-size: 11px;
     font-weight: bold;
-    letter-spacing: 1.5px;
-
-    cursor: pointer;
-    transition: 0.25s ease;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
 }
 
-button:hover {
-    background: linear-gradient(135deg, #0b4056, #12536a);
-    border-color: #00e5ff;
-    box-shadow: 0 0 15px #00d9ff35;
-    transform: translateY(-2px);
+.welcome h1 {
+    font-size: clamp(28px, 6vw, 43px);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
 }
 
-button:active {
-    transform: scale(0.97);
+.description {
+    color: var(--muted);
+    font-size: 14px;
 }
 
-button:focus-visible {
-    outline: 2px solid #00e5ff;
-    outline-offset: 4px;
+/* CAMPAIGN PANEL */
+
+.campaign-panel {
+    padding: 28px;
+    background: linear-gradient(120deg, #10263b, #0b1524);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.25);
 }
 
-.module button {
-    width: 100%;
+.campaign-panel h2,
+.modules h2 {
+    color: var(--cyan);
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
 }
 
-.campaign-info button {
-    min-width: 190px;
+.campaign-info p {
+    color: var(--muted);
+    font-size: 13px;
 }
 
-#back-home {
-    margin: 0 0 25px;
+.campaign-info h3 {
+    font-size: 27px;
+    margin: 10px 0;
 }
 
-/* CLICKABLE MODULES */
+/* MODULES */
+
+.modules {
+    margin-top: 45px;
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.module {
+    position: relative;
+    min-height: 135px;
+    padding: 24px;
+    overflow: hidden;
+
+    background: linear-gradient(145deg, var(--panel-light), var(--panel));
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    transition: transform 0.2s ease, border-color 0.2s ease,
+                background 0.2s ease;
+}
+
+.module h3 {
+    color: var(--cyan);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 13px;
+}
+
+.module p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
 
 .clickable {
     cursor: pointer;
-    position: relative;
-    transition: 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .clickable:hover {
-    border-color: #00d9ff;
-    background: #14283a;
+    border-color: var(--cyan);
+    background: #17344b;
     transform: translateY(-3px);
 }
 
@@ -73,18 +179,40 @@ button:focus-visible {
 
 .module-arrow {
     display: block;
-    color: #00d9ff;
+    margin-top: 12px;
+    color: var(--cyan);
     text-align: right;
     font-size: 20px;
-    margin-top: 12px;
+}
+
+/* CAMPAIGN SCREEN */
+
+.campaign-screen {
+    padding: 28px;
+    background: linear-gradient(145deg, #10263b, #0b1524);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-top: 30px;
+}
+
+.campaign-screen h2 {
+    color: var(--cyan);
+    font-size: 25px;
+    margin: 15px 0 25px;
+}
+
+.campaign-details {
+    color: #b8cede;
+    line-height: 2.5;
+    font-size: 14px;
 }
 
 .back-link {
     display: inline-block;
-    color: #00d9ff;
+    color: var(--cyan);
     cursor: pointer;
     font-size: 12px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     margin-bottom: 30px;
     padding: 10px 0;
 }
@@ -95,4 +223,46 @@ button:focus-visible {
 
 .campaign-screen[hidden] {
     display: none;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 65px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+    color: #61798d;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* MOBILE */
+
+@media (max-width: 550px) {
+    .header {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .system-status {
+        font-size: 8px;
+    }
+
+    .dashboard {
+        margin-top: 40px;
+    }
+
+    .module-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .campaign-panel,
+    .campaign-screen {
+        padding: 22px;
+    }
 }
