@@ -52,3 +52,47 @@ button:focus-visible {
 #back-home {
     margin: 0 0 25px;
 }
+
+/* CLICKABLE MODULES */
+
+.clickable {
+    cursor: pointer;
+    position: relative;
+    transition: 0.25s ease;
+}
+
+.clickable:hover {
+    border-color: #00d9ff;
+    background: #14283a;
+    transform: translateY(-3px);
+}
+
+.clickable:active {
+    transform: scale(0.98);
+}
+
+.module-arrow {
+    display: block;
+    color: #00d9ff;
+    text-align: right;
+    font-size: 20px;
+    margin-top: 12px;
+}
+
+.back-link {
+    display: inline-block;
+    color: #00d9ff;
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    padding: 10px 0;
+}
+
+.back-link:hover {
+    color: white;
+}
+
+.campaign-screen[hidden] {
+    display: none;
+}
